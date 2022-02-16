@@ -1,5 +1,6 @@
 This is an attempt to recreate the AWBW app in React. It is currently under development as the author (myself) learns to use Next.js while slowly porting.
 
-Node version: v16.14.0
+Project Management: https://app.asana.com/0/1201835112613267/list
 
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+###Installed Software Versions###
+Node version: v16.14.0
