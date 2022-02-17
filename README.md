@@ -4,4 +4,4 @@ Project Management: https://app.asana.com/0/1201835112613267/list
 
 ###Installed Software Versions###
 Node version: v16.14.0
-Yarn version: 1.22.17
+Yarn version: 3.1.1
