@@ -1,4 +1,5 @@
 {
+  "/example_index": "pages/example_index.html",
   "/": "pages/index.html",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
