@@ -1,5 +1,9 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
+/**
+ * Root of example application
+ * @return {div} Homepage div
+ */
 export default function Home() {
   return (
     <div className="container">
@@ -205,5 +209,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
