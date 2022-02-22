@@ -4,8 +4,8 @@ import fs from 'fs';
  * Reads in list of unit names and returns them in an array format.
  * @returns {Array<String>} unit names tied to specific indices
  */
-export default function unitLoader(){
-    const data = fs.readFileSync("src/constants/damage-matrix.txt", "utf-8")
+export default function unitLoader(file){
+    const data = fs.readFileSync(file, "utf-8")
     const damageLineData = data.split(/\r?\n/);
     const damageData = damageLineData.map(line => {
         const lineStringData = line.split(/\s+/);

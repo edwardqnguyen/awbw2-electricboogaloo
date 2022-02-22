@@ -1,4 +1,5 @@
 {
+  "/damageCalculator": "pages/damageCalculator.js",
   "/example_index": "pages/example_index.html",
   "/": "pages/index.html",
   "/_app": "pages/_app.js",
