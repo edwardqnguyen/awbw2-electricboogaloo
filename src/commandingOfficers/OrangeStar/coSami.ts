@@ -1,5 +1,5 @@
 import { CommandingOfficer, DEFAULT_POWER_ATK_BONUS, DEFAULT_POWER_DEF_BONUS } from "../commandingOfficerType";
-import { isInfantryTransportUnit, isCapturingUnit, isDirectUnit } from "../../gameData/unitTypes";
+import { isInfantryTransportUnit, isCapturingUnit, isDirectUnit } from "../../gameData/unitHelpers";
 
 const SAMI_INFANTRY_D2D_BONUS = 30;
 const SAMI_DIRECT_D2D_BONUS = -10;
