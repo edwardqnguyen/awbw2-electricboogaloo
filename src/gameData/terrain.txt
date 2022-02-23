@@ -1,0 +1,18 @@
+Plain
+Mountain
+Forest
+River
+Road
+Bridge
+Sea
+Shoal
+Reef
+City
+Base
+Airport
+Port
+Headquarters
+Pipe
+Silo
+Communication Tower
+Lab
