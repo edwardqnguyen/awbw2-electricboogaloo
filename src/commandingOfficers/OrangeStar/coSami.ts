@@ -1,76 +1,78 @@
 import { CommandingOfficer, DEFAULT_POWER_ATK_BONUS, DEFAULT_POWER_DEF_BONUS } from "../commandingOfficerType";
 import { isInfantryTransportUnit, isCapturingUnit, isDirectUnit } from "../../gameData/unitHelpers";
 
-const SAMI_INFANTRY_D2D_BONUS = 30;
-const SAMI_DIRECT_D2D_BONUS = -10;
-const SAMI_INFANTRY_COP_BONUS = 30;
-const SAMI_INFANTRY_SCOP_BONUS = 50;
-const SAMI_D2D_TRANSPORT_MOVE_BONUS = 1;
-const SAMI_COP_INFANTRY_MOVE_BONUS = 1;
-const SAMI_SCOP_INFANTRY_MOVE_BONUS = 2;
+const SAMI_INFANTRY_D2D_ATK_BONUS = 30;
+const SAMI_DIRECT_D2D_ATK_BONUS = -10;
+const SAMI_INFANTRY_COP_ATK_BONUS = 20;
+const SAMI_INFANTRY_SCOP_ATK_BONUS = 20;
+const SAMI_TRANSPORT_D2D_MOVE_BONUS = 1;
+const SAMI_INFANTRY_COP_MOVE_BONUS = 1;
+const SAMI_INFANTRY_SCOP_MOVE_BONUS = 2;
 
 export const coSami: CommandingOfficer = {
     name: "Sami",
     copSize: 3,
-    scopSize: 3,
+    scopSize: 5,
     
-    d2dAttackBonus: (data) => {
-        let base = 0;
+    attackBonus: (data) => {
+        let bonus = 0;
         if(isCapturingUnit(data.unitName)){
-            base = base + SAMI_INFANTRY_D2D_BONUS;
+            switch(data.powerStatus){
+                case 'SCOP':
+                    bonus += SAMI_INFANTRY_SCOP_ATK_BONUS;
+                case 'COP':
+                    bonus += DEFAULT_POWER_ATK_BONUS + SAMI_INFANTRY_COP_ATK_BONUS;
+                case 'D2D':
+                    bonus += SAMI_INFANTRY_D2D_ATK_BONUS;
+                    break;
+            }
         }
         else if(isDirectUnit(data.unitName)) {
-            base = base + SAMI_DIRECT_D2D_BONUS;
+            switch(data.powerStatus){
+                case 'SCOP':
+                case 'COP':
+                    bonus += DEFAULT_POWER_ATK_BONUS;
+                case 'D2D':
+                    bonus += bonus + SAMI_DIRECT_D2D_ATK_BONUS;
+                    break;
+            }
         }
-        return base;
+        return bonus;
     },
-    copAttackBonus: (data) => {
-        let base = DEFAULT_POWER_ATK_BONUS;
-        if(isCapturingUnit(data.unitName)){
-            base = base + SAMI_INFANTRY_D2D_BONUS + SAMI_INFANTRY_COP_BONUS;
+    defenseBonus: (data, atkUnit) => {
+        let bonus = 0;
+        switch(data.powerStatus){
+            case 'SCOP':
+            case 'COP':
+                bonus += DEFAULT_POWER_DEF_BONUS;
+            case 'D2D':
+                break;
         }
-        else if(isDirectUnit(data.unitName)) {
-            base = base + SAMI_DIRECT_D2D_BONUS;
-        }
-        return base;
-    },
-    scopAttackBonus: (data) => {
-        let base = DEFAULT_POWER_ATK_BONUS;
-        if(isCapturingUnit(data.unitName)){
-            base = base + SAMI_INFANTRY_D2D_BONUS + SAMI_INFANTRY_SCOP_BONUS;
-        }
-        else if(isDirectUnit(data.unitName)) {
-            base = base + SAMI_DIRECT_D2D_BONUS;
-        }
-        return base;
+        return bonus;
     },
 
-    d2dDefenseBonus: (data, atkUnit) => 0,
-    copDefenseBonus: (data, atkUnit) => DEFAULT_POWER_DEF_BONUS,
-    scopDefenseBonus: (data, atkUnit) => DEFAULT_POWER_DEF_BONUS,
-
-    d2dMoveBonus: (data) => {
-        return isInfantryTransportUnit(data.unitName) ? SAMI_D2D_TRANSPORT_MOVE_BONUS : 0
-    },
-    copMoveBonus: (data) => {
-        let base = 0;
-        if(isInfantryTransportUnit(data.unitName)) {
-            base = base + SAMI_D2D_TRANSPORT_MOVE_BONUS;
-        }
+    moveBonus: (data) => {
+        let bonus = 0;
         if(isCapturingUnit(data.unitName)){
-            base = base + SAMI_COP_INFANTRY_MOVE_BONUS;
-        } 
-        return base;
-    },
-    scopMoveBonus: (data) => {
-        let base = 0;
-        if(isInfantryTransportUnit(data.unitName)) {
-            base = base + SAMI_D2D_TRANSPORT_MOVE_BONUS;
+            switch(data.powerStatus){
+                case 'SCOP':
+                    bonus += SAMI_INFANTRY_SCOP_MOVE_BONUS;
+                case 'COP':
+                    bonus += SAMI_INFANTRY_COP_MOVE_BONUS;
+                case 'D2D':
+                    break;
+            }
         }
-        if(isCapturingUnit(data.unitName)){
-            base = base + SAMI_SCOP_INFANTRY_MOVE_BONUS;
-        } 
-        return base;
+        else if(isInfantryTransportUnit(data.unitName)) {
+            switch(data.powerStatus){
+                case 'SCOP':
+                case 'COP':
+                case 'D2D':
+                    bonus += bonus + SAMI_TRANSPORT_D2D_MOVE_BONUS;
+                    break;
+            }
+        }
+        return bonus;
     },
 
     applyCOPower: (game) => null,

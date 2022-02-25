@@ -1,12 +1,12 @@
 import { CommandingOfficer, DEFAULT_POWER_ATK_BONUS, DEFAULT_POWER_DEF_BONUS } from "../commandingOfficerType";
 import { isIndirectUnit, isDirectUnit, isCapturingUnit } from "../../gameData/unitHelpers";
 
-const MAX_DIRECT_D2D_BONUS = 20;
-const MAX_INDIRECT_D2D_BONUS = -10;
-const MAX_DIRECT_COP_BONUS = 20;
-const MAX_DIRECT_SCOP_BONUS = 40;
+const MAX_DIRECT_D2D_ATK_BONUS = 20;
+const MAX_INDIRECT_D2D_ATK_BONUS = -10;
+const MAX_DIRECT_COP_ATK_BONUS = 10;
+const MAX_DIRECT_SCOP_ATK_BONUS = 20;
 const MAX_COP_MOVE_BONUS = 1;
-const MAX_SCOP_MOVE_BONUS = 2;
+const MAX_SCOP_MOVE_BONUS = 1;
 
 
 export const coMax: CommandingOfficer = {
@@ -14,47 +14,65 @@ export const coMax: CommandingOfficer = {
     copSize: 3,
     scopSize: 3,
     
-    d2dAttackBonus: (data) => {
-        let base = 0;
+    attackBonus: (data) => {
+        let bonus = 0;
         if(isDirectUnit(data.unitName) && !isCapturingUnit(data.unitName)){
-            base = base + MAX_DIRECT_D2D_BONUS;
+            switch(data.powerStatus){
+                case 'SCOP':
+                    bonus += MAX_DIRECT_SCOP_ATK_BONUS;
+                case 'COP':
+                    bonus += DEFAULT_POWER_ATK_BONUS + MAX_DIRECT_COP_ATK_BONUS;
+                case 'D2D':
+                    bonus += MAX_DIRECT_D2D_ATK_BONUS;
+                    break;
+            }
         }
-        if(isIndirectUnit(data.unitName)) {
-            base = base + MAX_INDIRECT_D2D_BONUS;
+        else if(isIndirectUnit(data.unitName)) {
+            switch(data.powerStatus){
+                case 'SCOP':
+                case 'COP':
+                    bonus += DEFAULT_POWER_ATK_BONUS;
+                case 'D2D':
+                    bonus += MAX_INDIRECT_D2D_ATK_BONUS
+                    break;
+            }
         }
-        return base;
+        else {
+            switch(data.powerStatus){
+                case 'SCOP':
+                case 'COP':
+                    bonus += DEFAULT_POWER_ATK_BONUS;
+                case 'D2D':
+                    break;
+            }
+        }
+        return bonus;
     },
-    copAttackBonus: (data) => {
-        let base = DEFAULT_POWER_ATK_BONUS;
-        if(isDirectUnit(data.unitName) && !isCapturingUnit(data.unitName)){
-            base = base + MAX_DIRECT_D2D_BONUS + MAX_DIRECT_COP_BONUS;
+    defenseBonus: (data, atkUnit) => {
+        let bonus = 0;
+        switch(data.powerStatus){
+            case 'SCOP':
+            case 'COP':
+                bonus += DEFAULT_POWER_DEF_BONUS;
+            case 'D2D':
+                break;
         }
-        if(isIndirectUnit(data.unitName)) {
-            base = base + MAX_INDIRECT_D2D_BONUS;
-        }
-        return base;
+        return bonus;
     },
-    scopAttackBonus: (data) => {
-        let base = DEFAULT_POWER_ATK_BONUS;
-        if(isDirectUnit(data.unitName) && !isCapturingUnit(data.unitName)){
-            base = base + MAX_DIRECT_D2D_BONUS + MAX_DIRECT_SCOP_BONUS;
+    moveBonus: (data) => {
+        let bonus = 0;
+        if(!isDirectUnit(data.unitName)){
+            return bonus;
         }
-        if(isIndirectUnit(data.unitName)) {
-            base = base + MAX_INDIRECT_D2D_BONUS;
+        switch(data.powerStatus){
+            case 'SCOP':
+                bonus += MAX_SCOP_MOVE_BONUS;
+            case 'COP':
+                bonus += MAX_COP_MOVE_BONUS;
+            case 'D2D':
+                break;
         }
-        return base;
-    },
-
-    d2dDefenseBonus: (data, atkUnit) => 0,
-    copDefenseBonus: (data, atkUnit) => DEFAULT_POWER_DEF_BONUS,
-    scopDefenseBonus: (data, atkUnit) => DEFAULT_POWER_DEF_BONUS,
-
-    d2dMoveBonus: (data) => 0,
-    copMoveBonus: (data) => {
-        return isDirectUnit(data.unitName) ? MAX_COP_MOVE_BONUS : 0;
-    },
-    scopMoveBonus: (data) => {
-        return isDirectUnit(data.unitName) ? MAX_SCOP_MOVE_BONUS : 0;
+        return bonus;
     },
 
     applyCOPower: (game) => null,

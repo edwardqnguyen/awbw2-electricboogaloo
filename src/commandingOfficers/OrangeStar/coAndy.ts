@@ -8,17 +8,40 @@ export const coAndy: CommandingOfficer = {
     copSize: 3,
     scopSize: 3,
     
-    d2dAttackBonus: (data) => 0,
-    copAttackBonus: (data) => DEFAULT_POWER_ATK_BONUS,
-    scopAttackBonus: (data) => DEFAULT_POWER_ATK_BONUS+ANDY_SCOP_ATK_BONUS,
-
-    d2dDefenseBonus: (data, atkUnit) => 0,
-    copDefenseBonus: (data, atkUnit) => DEFAULT_POWER_DEF_BONUS,
-    scopDefenseBonus: (data, atkUnit) => DEFAULT_POWER_DEF_BONUS,
-
-    d2dMoveBonus: (data) => 0,
-    copMoveBonus: (data) => 0,
-    scopMoveBonus: (data) => ANDY_SCOP_MOVE_BONUS,
+    attackBonus: (data) => {
+        let bonus = 0;
+        switch(data.powerStatus){
+            case 'SCOP':
+                bonus += ANDY_SCOP_ATK_BONUS;
+            case 'COP':
+                bonus += DEFAULT_POWER_ATK_BONUS;
+            case 'D2D':
+                break;
+        }
+        return bonus;
+    },
+    defenseBonus: (data, atkUnit) => {
+        let bonus = 0;
+        switch(data.powerStatus){
+            case 'SCOP':
+            case 'COP':
+                bonus += DEFAULT_POWER_DEF_BONUS;
+            case 'D2D':
+                break;
+        }
+        return bonus;
+    },
+    moveBonus: (data) => {
+        let bonus = 0;
+        switch(data.powerStatus){
+            case 'SCOP':
+                bonus += ANDY_SCOP_MOVE_BONUS;
+            case 'COP':
+            case 'D2D':
+                break;
+        }
+        return bonus;
+    },
 
     applyCOPower: (game) => null,
     applySCOPower: (game) => null,

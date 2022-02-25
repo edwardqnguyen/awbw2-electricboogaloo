@@ -1,11 +1,15 @@
+type PowerStatus = "D2D" | "COP" | "SCOP";
 type UnitCombatData = {
     unitName: string;
     terrain: string;
     funds: number;
     commTowers: number;
     cities: number;
+    powerStatus: PowerStatus;
 }
 
+// Commanding officers will often have bonuses tied to their D2D/CO/SCO powers.
+// Constants to represent these should be of the form <CO>_<UnitType>_<PowerStatus>_<BonusType>
 export const DEFAULT_POWER_ATK_BONUS = 10;
 export const DEFAULT_POWER_DEF_BONUS = 10;
 
@@ -14,17 +18,9 @@ export interface CommandingOfficer {
     copSize: number;
     scopSize: number;
     
-    d2dAttackBonus: (data: UnitCombatData) => number;
-    copAttackBonus: (data: UnitCombatData) => number;
-    scopAttackBonus: (data: UnitCombatData) => number;
-
-    d2dDefenseBonus: (data: UnitCombatData, atkUnit: string) => number;
-    copDefenseBonus: (data: UnitCombatData, atkUnit: string) => number;
-    scopDefenseBonus: (data: UnitCombatData, atkUnit: string) => number;
-
-    d2dMoveBonus: (data: UnitCombatData) => number;
-    copMoveBonus: (data: UnitCombatData) => number;
-    scopMoveBonus: (data: UnitCombatData) => number;
+    attackBonus: (data: UnitCombatData) => number;
+    defenseBonus: (data: UnitCombatData, atkUnit: string) => number;
+    moveBonus: (data: UnitCombatData) => number;
 
     applyCOPower: (game: any) => null;
     applySCOPower: (game: any) => null;
