@@ -5,9 +5,9 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/4JOBCgE3C4W1Ig98d6cc-/_buildManifest.js",
-    "static/4JOBCgE3C4W1Ig98d6cc-/_ssgManifest.js",
-    "static/4JOBCgE3C4W1Ig98d6cc-/_middlewareManifest.js"
+    "static/cjaw4ZzgAq5QIj7c-A8UG/_buildManifest.js",
+    "static/cjaw4ZzgAq5QIj7c-A8UG/_ssgManifest.js",
+    "static/cjaw4ZzgAq5QIj7c-A8UG/_middlewareManifest.js"
   ],
   "pages": {
     "/": [
@@ -33,7 +33,7 @@
       "static/chunks/framework-91d7f78b5b4003c8.js",
       "static/chunks/main-83803dd478f5b5bc.js",
       "static/chunks/942-bea057c22caaed2f.js",
-      "static/chunks/pages/damageCalculator-6f69d50549ec2aec.js"
+      "static/chunks/pages/damageCalculator-ddc78b6dcb016111.js"
     ],
     "/example_index": [
       "static/chunks/webpack-2e51481b1d484a05.js",

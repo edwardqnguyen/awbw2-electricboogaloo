@@ -3,18 +3,14 @@ import { CommandingOfficer,
     DEFAULT_POWER_DEF_BONUS,
     DEFAULT_BADLUCKMAX,
     DEFAULT_GOODLUCKMAX, } from "../commandingOfficerType";
-import { isIndirectUnit, isDirectUnit, isCapturingUnit } from "../../dataHelpers/unitHelpers";
+import { isIndirectUnit, isDirectUnit} from "../../dataHelpers/unitHelpers";
 
-const MAX_DIRECT_D2D_ATK_BONUS = 20;
-const MAX_INDIRECT_D2D_ATK_BONUS = -10;
-const MAX_DIRECT_COP_ATK_BONUS = 10;
-const MAX_DIRECT_SCOP_ATK_BONUS = 20;
-const MAX_COP_MOVE_BONUS = 1;
-const MAX_SCOP_MOVE_BONUS = 1;
+const GRIT_INDIRECT_D2D_ATK_BONUS = 20;
+const GRIT_DIRECT_D2D_ATK_BONUS = -20;
+const GRIT_INDIRECT_COP_ATK_BONUS = 20;
 
-
-export const coMax: CommandingOfficer = {
-    name: "Max",
+export const coGrit: CommandingOfficer = {
+    name: "Grit",
     copSize: 3,
     scopSize: 3,
     
@@ -23,11 +19,10 @@ export const coMax: CommandingOfficer = {
         if(isDirectUnit(data.unitName)){
             switch(data.powerStatus){
                 case 'SCOP':
-                    bonus += MAX_DIRECT_SCOP_ATK_BONUS;
                 case 'COP':
-                    bonus += DEFAULT_POWER_ATK_BONUS + MAX_DIRECT_COP_ATK_BONUS;
+                    bonus += DEFAULT_POWER_ATK_BONUS
                 case 'D2D':
-                    bonus += MAX_DIRECT_D2D_ATK_BONUS;
+                    bonus += GRIT_DIRECT_D2D_ATK_BONUS;
                     break;
             }
         }
@@ -35,9 +30,9 @@ export const coMax: CommandingOfficer = {
             switch(data.powerStatus){
                 case 'SCOP':
                 case 'COP':
-                    bonus += DEFAULT_POWER_ATK_BONUS;
+                    bonus += DEFAULT_POWER_ATK_BONUS + GRIT_INDIRECT_COP_ATK_BONUS;
                 case 'D2D':
-                    bonus += MAX_INDIRECT_D2D_ATK_BONUS
+                    bonus += GRIT_INDIRECT_D2D_ATK_BONUS;
                     break;
             }
         }
@@ -63,21 +58,7 @@ export const coMax: CommandingOfficer = {
         }
         return bonus;
     },
-    moveBonus: (data) => {
-        let bonus = 0;
-        if(!isDirectUnit(data.unitName) && !isCapturingUnit(data.unitName)){
-            return bonus;
-        }
-        switch(data.powerStatus){
-            case 'SCOP':
-                bonus += MAX_SCOP_MOVE_BONUS;
-            case 'COP':
-                bonus += MAX_COP_MOVE_BONUS;
-            case 'D2D':
-                break;
-        }
-        return bonus;
-    },
+    moveBonus: (data) => 0,
 
     badLuckMax: (powerStatus) => DEFAULT_BADLUCKMAX,
     goodLuckMax: (powerStatus) => DEFAULT_GOODLUCKMAX,
