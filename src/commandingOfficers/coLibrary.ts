@@ -19,6 +19,10 @@ import { coSensei } from "./YellowComet/coSensei"
 import { coGrimm } from "./YellowComet/coGrimm"
 
 // GE
+import { coEagle } from "./GreenEarth/coEagle"
+import { coDrake } from "./GreenEarth/coDrake"
+import { coJess } from "./GreenEarth/coJess"
+import { coJavier } from "./GreenEarth/coJavier"
 
 // BH
 import { coFlak } from "./BlackHole/coFlak"
@@ -46,6 +50,11 @@ export const coLibrary = {
     "Sonja": coSonja,
     "Sensei": coSensei,
     "Grimm": coGrimm,
+
+    "Eagle": coEagle,
+    "Drake": coDrake,
+    "Jess": coJess,
+    "Javier": coJavier,
 
     "Flak": coFlak,
     "Adder": coAdder,

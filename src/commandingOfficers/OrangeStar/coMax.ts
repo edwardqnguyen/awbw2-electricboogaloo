@@ -20,35 +20,17 @@ export const coMax: CommandingOfficer = {
     
     attackBonus: (data) => {
         let bonus = 0;
-        if(isDirectUnit(data.unitName)){
-            switch(data.powerStatus){
-                case 'SCOP':
-                    bonus += MAX_DIRECT_SCOP_ATK_BONUS;
-                case 'COP':
-                    bonus += DEFAULT_POWER_ATK_BONUS + MAX_DIRECT_COP_ATK_BONUS;
-                case 'D2D':
-                    bonus += MAX_DIRECT_D2D_ATK_BONUS;
-                    break;
-            }
-        }
-        else if(isIndirectUnit(data.unitName)) {
-            switch(data.powerStatus){
-                case 'SCOP':
-                case 'COP':
-                    bonus += DEFAULT_POWER_ATK_BONUS;
-                case 'D2D':
-                    bonus += MAX_INDIRECT_D2D_ATK_BONUS
-                    break;
-            }
-        }
-        else {
-            switch(data.powerStatus){
-                case 'SCOP':
-                case 'COP':
-                    bonus += DEFAULT_POWER_ATK_BONUS;
-                case 'D2D':
-                    break;
-            }
+        const unitName = data.unitName;
+        switch(data.powerStatus){
+            case 'SCOP':
+                if(isDirectUnit(unitName)) bonus += MAX_DIRECT_SCOP_ATK_BONUS;
+            case 'COP':
+                bonus += DEFAULT_POWER_ATK_BONUS 
+                if(isDirectUnit(unitName)) bonus+= MAX_DIRECT_COP_ATK_BONUS;
+            case 'D2D':
+                if(isDirectUnit(unitName)) bonus += MAX_DIRECT_D2D_ATK_BONUS;
+                if(isIndirectUnit(unitName)) bonus += MAX_INDIRECT_D2D_ATK_BONUS;
+                break;
         }
         return bonus;
     },
