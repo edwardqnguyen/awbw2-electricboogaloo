@@ -5,9 +5,9 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/ugO8CbHnw8yXtIeztEsAS/_buildManifest.js",
-    "static/ugO8CbHnw8yXtIeztEsAS/_ssgManifest.js",
-    "static/ugO8CbHnw8yXtIeztEsAS/_middlewareManifest.js"
+    "static/1viyH8UG2ma7O-yB_GWvD/_buildManifest.js",
+    "static/1viyH8UG2ma7O-yB_GWvD/_ssgManifest.js",
+    "static/1viyH8UG2ma7O-yB_GWvD/_middlewareManifest.js"
   ],
   "pages": {
     "/": [
@@ -32,14 +32,22 @@
       "static/chunks/webpack-2e51481b1d484a05.js",
       "static/chunks/framework-91d7f78b5b4003c8.js",
       "static/chunks/main-83803dd478f5b5bc.js",
-      "static/chunks/942-bea057c22caaed2f.js",
-      "static/chunks/pages/damageCalculator-6e04e82c4f7a673d.js"
+      "static/chunks/206-35e656e6350d7894.js",
+      "static/chunks/942-9ffc0f78266672e7.js",
+      "static/chunks/pages/damageCalculator-7ca71bf788c05351.js"
     ],
     "/example_index": [
       "static/chunks/webpack-2e51481b1d484a05.js",
       "static/chunks/framework-91d7f78b5b4003c8.js",
       "static/chunks/main-83803dd478f5b5bc.js",
       "static/chunks/pages/example_index-c3e1a1655133c00e.js"
+    ],
+    "/unitDamageChart": [
+      "static/chunks/webpack-2e51481b1d484a05.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/206-35e656e6350d7894.js",
+      "static/chunks/pages/unitDamageChart-56ea5e5155ac9c2d.js"
     ]
   },
   "ampFirstPages": []

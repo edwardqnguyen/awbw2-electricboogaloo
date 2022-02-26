@@ -2,6 +2,7 @@
   "/damageCalculator": "pages/damageCalculator.js",
   "/example_index": "pages/example_index.html",
   "/": "pages/index.html",
+  "/unitDamageChart": "pages/unitDamageChart.js",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",

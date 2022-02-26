@@ -8,7 +8,7 @@ export default function unitLoader(file){
     const data = fs.readFileSync(file, "utf-8")
     const damageLineData = data.split(/\r?\n/);
     const damageData = damageLineData.map(line => {
-        const lineStringData = line.split(/\s+/);
+        const lineStringData = line.trim().split(/\s+/);
         const lineNumberData = lineStringData.map(value => parseInt(value));
         return lineNumberData;
     })
