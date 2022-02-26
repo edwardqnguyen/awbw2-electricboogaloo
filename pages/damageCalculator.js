@@ -1,11 +1,11 @@
 import unitLoader from '../src/dataLoaders/unitLoader';
 import damageMatrixLoader from '../src/dataLoaders/damageMatrixLoader';
 import terrainLoader from '../src/dataLoaders/terrainLoader';
-import {getTerrainDefense} from '../src/gameData/terrainHelpers';
+import {terrainDefenseDict} from '../src/dataHelpers/terrainHelpers';
 import {POWER_STATUS_OPTIONS} from '../src/commandingOfficers/commandingOfficerType';
 import {coLibrary} from '../src/commandingOfficers/coLibrary';
-import {isAirUnit} from '../src/gameData/unitHelpers';
-import {damageRangeCalculator} from '../src/engine/combatCalculator';
+import {isAirUnit} from '../src/dataHelpers/unitHelpers';
+import {damageEquationCalculator, damageRangeCalculator} from '../src/engine/combatCalculator';
 import selectBox from '../src/components/selectBox';
 import numericalInput from '../src/components/numericalInput';
 import * as React from 'react';
@@ -73,13 +73,14 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
     const atkCOObject = coLibrary[atkCO];
     const defCOObject = coLibrary[defCO];
     const atkBonus = 10*atkCommTower + atkCOObject.attackBonus(atkUnitCombatData);
-    const terrainDef = isAirUnit(defUnit) ? 0 : getTerrainDefense[defTerrain];
+    const terrainDef = isAirUnit(defUnit) ? 0 : terrainDefenseDict[defTerrain];
     const defBonus = defCOObject.defenseBonus(defUnitCombatData, atkUnit);
+
     // TODO update to take into account luck/hp
-    const {baseAttack: base, modifier: mod} = damageRangeCalculator(getDamageBase(), atkBonus, defBonus, terrainDef, 10, 10);
-    const minLuck = 0;
-    const maxLuck = 9;
-    const damageRange = [(base+minLuck)*mod, (base+maxLuck)*mod];
+    const {baseAttack: base, modifier: mod} = damageEquationCalculator(getDamageBase(), 100+atkBonus, 100+defBonus, terrainDef, 10, 10);
+    const badLuck = 1;
+    const goodLuck = 10;
+    const damageRange = damageRangeCalculator(base, mod, badLuck, goodLuck);
     return damageRange;
   };
 
@@ -192,7 +193,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       <text>
-        Damage Range is: {getCombatDamageRange()}
+        Damage Range is: {getCombatDamageRange().toString()}
       </text>
     </>
   );

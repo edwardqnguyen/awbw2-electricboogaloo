@@ -1,5 +1,5 @@
 import { CommandingOfficer, DEFAULT_POWER_ATK_BONUS, DEFAULT_POWER_DEF_BONUS } from "../commandingOfficerType";
-import { isIndirectUnit, isDirectUnit, isCapturingUnit } from "../../gameData/unitHelpers";
+import { isIndirectUnit, isDirectUnit, isCapturingUnit } from "../../dataHelpers/unitHelpers";
 
 const MAX_DIRECT_D2D_ATK_BONUS = 20;
 const MAX_INDIRECT_D2D_ATK_BONUS = -10;
