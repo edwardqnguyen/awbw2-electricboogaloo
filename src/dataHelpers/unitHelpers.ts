@@ -1,11 +1,13 @@
 const capturingUnits = ["Infantry", "Mech"];
 const indirectUnits = ["Artillery", "Rocket", "Battleship", "Missile", "Piperunner", "Carrier"];
-const directUnits = ["Anti-Air", "B-Copter", "Bomber", "Cruiser", "Fighter", "Infantry", "Md. Tank" 
-   , "Mech", "Mega Tank", "Neotank", "Recon", "Stealth", "Sub", "Tank"];
+const directUnits = ["Anti-Air", "B-Copter", "Bomber", "Cruiser", "Fighter", "Infantry", "Md. Tank", 
+    "Mech", "Mega Tank", "Neotank", "Recon", "Stealth", "Sub", "Tank"];
 const airUnits = ["B-Copter", "Fighter", "Stealth", "Bomber", "T-Copter"];
 const seaUnits = ["Battleship", "Cruiser", "Sub", "Black Boat", "Carrier", "Lander"];
 const infantryTransportUnits = ["T-Copter", "Black Boat", "Lander", "APC"];
 const transportUnits = [...infantryTransportUnits, "Cruiser", "Carrier"];
+const groundVehicleUnits = ["Anti-Air", "Missile", "Piperunner", "Md.Tank", "Artillery", "Rocket", "Mega Tank", 
+    "Neotank", "Recon", "Tank", "APC"];
 
 export function isCapturingUnit(unit: string): boolean{
     return capturingUnits.includes(unit);
@@ -27,4 +29,7 @@ export function isInfantryTransportUnit(unit: string): boolean{
 }
 export function isTransportUnit(unit: string): boolean{
     return transportUnits.includes(unit);
+}
+export function isGroundVehicleUnit(unit: string): boolean{
+    return groundVehicleUnits.includes(unit);
 }

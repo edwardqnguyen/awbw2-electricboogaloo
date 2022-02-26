@@ -1,3 +1,4 @@
+// OS
 import { coAndy } from "./OrangeStar/coAndy"
 import { coMax } from "./OrangeStar/coMax"
 import { coSami } from "./OrangeStar/coSami"
@@ -5,11 +6,21 @@ import { coRachel } from "./OrangeStar/coRachel"
 import { coNell } from "./OrangeStar/coNell"
 import { coHachi } from "./OrangeStar/coHachi"
 
+// BM
 import { coOlaf } from "./BlueMoon/coOlaf"
 import { coGrit } from "./BlueMoon/coGrit"
 import { coColin } from "./BlueMoon/coColin"
 import { coSasha } from "./BlueMoon/coSasha"
 
+// YC
+import { coKanbei } from "./YellowComet/coKanbei"
+import { coSonja } from "./YellowComet/coSonja"
+import { coSensei } from "./YellowComet/coSensei"
+import { coGrimm } from "./YellowComet/coGrimm"
+
+// GE
+
+// BH
 import { coFlak } from "./BlackHole/coFlak"
 import { coAdder } from "./BlackHole/coAdder"
 import { coLash } from "./BlackHole/coLash"
@@ -30,6 +41,11 @@ export const coLibrary = {
     "Grit": coGrit,
     "Colin": coColin,
     "Sasha": coSasha, //heh "Sahsa"
+
+    "Kanbei": coKanbei,
+    "Sonja": coSonja,
+    "Sensei": coSensei,
+    "Grimm": coGrimm,
 
     "Flak": coFlak,
     "Adder": coAdder,
