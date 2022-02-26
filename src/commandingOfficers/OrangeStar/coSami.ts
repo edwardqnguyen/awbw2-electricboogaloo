@@ -1,4 +1,8 @@
-import { CommandingOfficer, DEFAULT_POWER_ATK_BONUS, DEFAULT_POWER_DEF_BONUS } from "../commandingOfficerType";
+import { CommandingOfficer, 
+    DEFAULT_POWER_ATK_BONUS, 
+    DEFAULT_POWER_DEF_BONUS,
+    DEFAULT_BADLUCKMAX,
+    DEFAULT_GOODLUCKMAX, } from "../commandingOfficerType";
 import { isInfantryTransportUnit, isCapturingUnit, isDirectUnit } from "../../dataHelpers/unitHelpers";
 
 const SAMI_INFANTRY_D2D_ATK_BONUS = 30;
@@ -74,9 +78,9 @@ export const coSami: CommandingOfficer = {
         }
         return bonus;
     },
-    
-    badLuckMax: (powerStatus) => 0,
-    goodLuckMax: (powerStatus) => 9,
+
+    badLuckMax: (powerStatus) => DEFAULT_BADLUCKMAX,
+    goodLuckMax: (powerStatus) => DEFAULT_GOODLUCKMAX,
 
     applyCOPower: (game) => null,
     applySCOPower: (game) => null,

@@ -12,6 +12,8 @@ type UnitCombatData = {
 // Constants to represent these should be of the form <CO>_<UnitType>_<PowerStatus>_<BonusType>
 export const DEFAULT_POWER_ATK_BONUS = 10;
 export const DEFAULT_POWER_DEF_BONUS = 10;
+export const DEFAULT_BADLUCKMAX = 0;
+export const DEFAULT_GOODLUCKMAX = 9;
 export const POWER_STATUS_OPTIONS = ["D2D", "COP", "SCOP"];
 
 export interface CommandingOfficer {

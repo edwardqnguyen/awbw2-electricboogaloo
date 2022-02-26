@@ -1,4 +1,8 @@
-import { CommandingOfficer, DEFAULT_POWER_ATK_BONUS, DEFAULT_POWER_DEF_BONUS } from "../commandingOfficerType";
+import { CommandingOfficer, 
+    DEFAULT_POWER_ATK_BONUS, 
+    DEFAULT_POWER_DEF_BONUS,
+    DEFAULT_BADLUCKMAX,
+    DEFAULT_GOODLUCKMAX, } from "../commandingOfficerType";
 import { isIndirectUnit, isDirectUnit, isCapturingUnit } from "../../dataHelpers/unitHelpers";
 
 const MAX_DIRECT_D2D_ATK_BONUS = 20;
@@ -75,8 +79,8 @@ export const coMax: CommandingOfficer = {
         return bonus;
     },
 
-    badLuckMax: (powerStatus) => 0,
-    goodLuckMax: (powerStatus) => 9,
+    badLuckMax: (powerStatus) => DEFAULT_BADLUCKMAX,
+    goodLuckMax: (powerStatus) => DEFAULT_GOODLUCKMAX,
 
     applyCOPower: (game) => null,
     applySCOPower: (game) => null,
