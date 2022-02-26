@@ -23,6 +23,9 @@ export interface CommandingOfficer {
     defenseBonus: (data: UnitCombatData, atkUnit: string) => number;
     moveBonus: (data: UnitCombatData) => number;
 
+    goodLuckMax: (powerStatus: PowerStatus) => number;
+    badLuckMax: (powerStatus: PowerStatus) => number;
+
     applyCOPower: (game: any) => null;
     applySCOPower: (game: any) => null;
 

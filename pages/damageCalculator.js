@@ -19,10 +19,15 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
   const damageMatrix = dmgMatrix;
   const terrainList = terrainArray;
   const availableCOS = Object.keys(coLibrary);
+  // This gives [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  // See: https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
+  const hpValues = Array.from({length: 10}, (_, i) => i+1);
 
   // state variables and setter definitions
   const [atkUnit, setAtkUnit] = React.useState(unitList[0]);
   const [defUnit, setDefUnit] = React.useState(unitList[0]);
+  const [atkHP, setAtkHP] = React.useState(10);
+  const [defHP, setDefHP] = React.useState(10);
   const [atkCO, setAtkCO] = React.useState(availableCOS[0]);
   const [defCO, setDefCO] = React.useState(availableCOS[0]);
   const [atkFunds, setAtkFunds] = React.useState(0);
@@ -76,10 +81,10 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
     const terrainDef = isAirUnit(defUnit) ? 0 : terrainDefenseDict[defTerrain];
     const defBonus = defCOObject.defenseBonus(defUnitCombatData, atkUnit);
 
-    // TODO update to take into account luck/hp
-    const {baseAttack: base, modifier: mod} = damageEquationCalculator(getDamageBase(), 100+atkBonus, 100+defBonus, terrainDef, 10, 10);
-    const badLuck = 1;
-    const goodLuck = 10;
+
+    const {baseAttack: base, modifier: mod} = damageEquationCalculator(getDamageBase(), 100+atkBonus, 100+defBonus, terrainDef, atkHP, defHP);
+    const badLuck = atkCOObject.badLuckMax(atkPowerStatus);
+    const goodLuck = atkCOObject.goodLuckMax(atkPowerStatus);
     const damageRange = damageRangeCalculator(base, mod, badLuck, goodLuck);
     return damageRange;
   };
@@ -100,6 +105,22 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
           onChangeSetter: onChangeHelper(setDefUnit),
           label: 'Defending Unit',
           valueList: unitList,
+        })
+      }
+      {
+        selectBox({
+          value: atkHP,
+          onChangeSetter: onChangeHelper(setAtkHP),
+          label: 'Attacking Unit HP',
+          valueList: hpValues,
+        })
+      }
+      {
+        selectBox({
+          value: defHP,
+          onChangeSetter: onChangeHelper(setDefHP),
+          label: 'Defending Unit HP',
+          valueList: hpValues,
         })
       }
       {

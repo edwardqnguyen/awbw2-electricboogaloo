@@ -75,6 +75,9 @@ export const coMax: CommandingOfficer = {
         return bonus;
     },
 
+    badLuckMax: (powerStatus) => 0,
+    goodLuckMax: (powerStatus) => 9,
+
     applyCOPower: (game) => null,
     applySCOPower: (game) => null,
 }

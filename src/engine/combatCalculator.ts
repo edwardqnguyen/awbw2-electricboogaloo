@@ -14,11 +14,11 @@ export function damageEquationCalculator(matchupDamage:number, atkModifier:numbe
 }
 
 export function damageRangeCalculator(baseAttack: number, modifier: number, badLuckMax: number, goodLuckMax: number) {
-    const lowEstimate = Math.floor((baseAttack - badLuckMax + 1) * modifier);
-    const highEstimate = Math.floor((baseAttack + goodLuckMax - 1) * modifier);
+    const lowEstimate = Math.floor((baseAttack - badLuckMax) * modifier);
+    const highEstimate = Math.floor((baseAttack + goodLuckMax) * modifier);
     return [lowEstimate, highEstimate];
 }
 
 export function sampleDamage(baseAttack: number, modifier: number, badLuckMax: number, goodLuckMax: number) {
-    return (baseAttack + getRandomInt(goodLuckMax) - getRandomInt(badLuckMax)) * modifier;
+    return (baseAttack + getRandomInt(goodLuckMax + 1) - getRandomInt(badLuckMax + 1)) * modifier;
 }
