@@ -1,4 +1,5 @@
 {
+  "/coDamageChart": "pages/coDamageChart.js",
   "/damageCalculator": "pages/damageCalculator.js",
   "/example_index": "pages/example_index.html",
   "/": "pages/index.html",

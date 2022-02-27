@@ -81,7 +81,6 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
     const terrainDef = isAirUnit(defUnit) ? 0 : terrainDefenseDict[defTerrain];
     const defBonus = defCOObject.defenseBonus(defUnitCombatData, atkUnit);
 
-
     const {baseAttack: base, modifier: mod} = damageEquationCalculator(getDamageBase(), 100+atkBonus, 100+defBonus, terrainDef, atkHP, defHP);
     const badLuck = atkCOObject.badLuckMax(atkPowerStatus);
     const goodLuck = atkCOObject.goodLuckMax(atkPowerStatus);

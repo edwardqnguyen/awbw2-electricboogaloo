@@ -8,21 +8,14 @@ import {
 } from '@mui/material';
 import unitLoader from '../src/dataLoaders/unitLoader';
 import damageMatrixLoader from '../src/dataLoaders/damageMatrixLoader';
+import {unitToImageSrc} from '../src/dataHelpers/imageHelpers';
 import * as React from 'react';
 
-// TODO: replace with awbw assets
-/**
- *
- * @param {string} unitName
- * @return {any} representation of that unit.
- */
-function getUnitRepresentation(unitName) {
-  return 'x';
-}
+const topFaction = 'CobaltIce';
+const sideFaction = 'RedFire';
 
 /**
- * Root of application, currently set to damage calculator
- * as part of milestone 1
+ * Unit on Unit Base Damage Chart
  * @return {div} Homepage div
  */
 export default function unitDamageChart({unitArray, dmgMatrix}) {
@@ -37,7 +30,7 @@ export default function unitDamageChart({unitArray, dmgMatrix}) {
             {
               unitList.map((unit) => (
                 <TableCell align='center'>
-                  {getUnitRepresentation(unit)}
+                  <img src={unitToImageSrc(unit, topFaction)}/>
                 </TableCell>
               ))
             }
@@ -47,7 +40,7 @@ export default function unitDamageChart({unitArray, dmgMatrix}) {
               damageMatrix.map((row, i) => (
                 <TableRow>
                   <TableCell align='center'>
-                    {getUnitRepresentation(unitArray[i])}
+                    <img src={unitToImageSrc(unitList[i], sideFaction)}/>
                   </TableCell>
                   {
                     row.map((element) => (
