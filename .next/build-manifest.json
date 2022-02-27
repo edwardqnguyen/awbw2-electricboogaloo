@@ -5,9 +5,9 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/64Y1l7uxGUW67WTn9lKx1/_buildManifest.js",
-    "static/64Y1l7uxGUW67WTn9lKx1/_ssgManifest.js",
-    "static/64Y1l7uxGUW67WTn9lKx1/_middlewareManifest.js"
+    "static/EXgtQKXLdPAFFUNY3W960/_buildManifest.js",
+    "static/EXgtQKXLdPAFFUNY3W960/_ssgManifest.js",
+    "static/EXgtQKXLdPAFFUNY3W960/_middlewareManifest.js"
   ],
   "pages": {
     "/": [
@@ -32,19 +32,19 @@
       "static/chunks/webpack-2e51481b1d484a05.js",
       "static/chunks/framework-91d7f78b5b4003c8.js",
       "static/chunks/main-83803dd478f5b5bc.js",
-      "static/chunks/206-35e656e6350d7894.js",
-      "static/chunks/411-0bc85327b249503f.js",
+      "static/chunks/470-194960fb58d3020f.js",
+      "static/chunks/411-0f526231d8ab0208.js",
       "static/chunks/867-b55170e7c9143944.js",
-      "static/chunks/pages/coDamageChart-36428c636849111d.js"
+      "static/chunks/pages/coDamageChart-f14eb7dc8a7c24c9.js"
     ],
     "/damageCalculator": [
       "static/chunks/webpack-2e51481b1d484a05.js",
       "static/chunks/framework-91d7f78b5b4003c8.js",
       "static/chunks/main-83803dd478f5b5bc.js",
-      "static/chunks/206-35e656e6350d7894.js",
-      "static/chunks/942-9ffc0f78266672e7.js",
+      "static/chunks/470-194960fb58d3020f.js",
+      "static/chunks/942-cc4a74defaf42fdc.js",
       "static/chunks/867-b55170e7c9143944.js",
-      "static/chunks/pages/damageCalculator-9474cc2c25082123.js"
+      "static/chunks/pages/damageCalculator-83d6c41f4dae612b.js"
     ],
     "/example_index": [
       "static/chunks/webpack-2e51481b1d484a05.js",
@@ -56,9 +56,9 @@
       "static/chunks/webpack-2e51481b1d484a05.js",
       "static/chunks/framework-91d7f78b5b4003c8.js",
       "static/chunks/main-83803dd478f5b5bc.js",
-      "static/chunks/206-35e656e6350d7894.js",
-      "static/chunks/411-0bc85327b249503f.js",
-      "static/chunks/pages/unitDamageChart-b12f693ea179b9c6.js"
+      "static/chunks/470-194960fb58d3020f.js",
+      "static/chunks/411-0f526231d8ab0208.js",
+      "static/chunks/pages/unitDamageChart-0d0932249f9d12a4.js"
     ]
   },
   "ampFirstPages": []

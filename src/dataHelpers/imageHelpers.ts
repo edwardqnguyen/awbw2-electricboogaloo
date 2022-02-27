@@ -26,6 +26,14 @@ const unitDict = {
     "Tank": 'tank'
 }
 
+export const version = ["AW1", "AW2", "AWDS"];
+export type Version = "AW1" | "AW2" | "AWDS";
+
 export function unitToImageSrc(unitName: string, faction: string){
     return "/awbwAssets/"+faction+"/"+unitDict[unitName]+".gif";
+}
+
+export function coToImageSrc(co: string, version: Version){
+    const imageUrl = co.replace(/\s+/,"").toLowerCase()+".jpg";
+    return "/awbwCoPortraits/"+version.toLowerCase()+"/"+imageUrl;
 }
