@@ -7,9 +7,9 @@ import {
   TableRow,
 } from '@mui/material';
 import {styled} from '@mui/system';
-import unitLoader from '../src/dataLoaders/unitLoader';
-import {unitToImageSrc, coToImageSrc} from '../src/dataHelpers/imageHelpers';
-import {coLibrary} from '../src/commandingOfficers/coLibrary';
+import unitLoader from '../../src/dataLoaders/unitLoader';
+import {unitToImageSrc, coToImageSrc} from '../../src/dataHelpers/imageHelpers';
+import {coLibrary} from '../../src/commandingOfficers/coLibrary';
 import * as React from 'react';
 
 const topFaction = 'CobaltIce';

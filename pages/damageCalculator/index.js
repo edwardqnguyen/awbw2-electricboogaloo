@@ -1,13 +1,13 @@
-import unitLoader from '../src/dataLoaders/unitLoader';
-import damageMatrixLoader from '../src/dataLoaders/damageMatrixLoader';
-import terrainLoader from '../src/dataLoaders/terrainLoader';
-import {terrainDefenseDict} from '../src/dataHelpers/terrainHelpers';
-import {POWER_STATUS_OPTIONS} from '../src/commandingOfficers/commandingOfficerType';
-import {coLibrary} from '../src/commandingOfficers/coLibrary';
-import {isAirUnit} from '../src/dataHelpers/unitHelpers';
-import {damageEquationCalculator, damageRangeCalculator} from '../src/engine/combatCalculator';
-import selectBox from '../src/components/selectBox';
-import numericalInput from '../src/components/numericalInput';
+import unitLoader from '../../src/dataLoaders/unitLoader';
+import damageMatrixLoader from '../../src/dataLoaders/damageMatrixLoader';
+import terrainLoader from '../../src/dataLoaders/terrainLoader';
+import {terrainDefenseDict} from '../../src/dataHelpers/terrainHelpers';
+import {POWER_STATUS_OPTIONS} from '../../src/commandingOfficers/commandingOfficerType';
+import {coLibrary} from '../../src/commandingOfficers/coLibrary';
+import {isAirUnit} from '../../src/dataHelpers/unitHelpers';
+import {damageEquationCalculator, damageRangeCalculator} from '../../src/engine/combatCalculator';
+import selectBox from '../../src/components/selectBox';
+import numericalInput from '../../src/components/numericalInput';
 import * as React from 'react';
 
 /**
@@ -91,7 +91,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
   return (
     <>
       {
-        selectBox({
+        selectBox({ // Atk Unit
           value: atkUnit,
           onChangeSetter: onChangeHelper(setAtkUnit),
           label: 'Attacking Unit',
@@ -99,7 +99,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Def Unit
           value: defUnit,
           onChangeSetter: onChangeHelper(setDefUnit),
           label: 'Defending Unit',
@@ -107,7 +107,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Atk HP
           value: atkHP,
           onChangeSetter: onChangeHelper(setAtkHP),
           label: 'Attacking Unit HP',
@@ -115,7 +115,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Def HP
           value: defHP,
           onChangeSetter: onChangeHelper(setDefHP),
           label: 'Defending Unit HP',
@@ -123,7 +123,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Atk Terrian
           value: atkTerrain,
           onChangeSetter: onChangeHelper(setAtkTerrain),
           label: 'Attacking Terrain',
@@ -131,7 +131,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Def Terrain
           value: defTerrain,
           onChangeSetter: onChangeHelper(setDefTerrain),
           label: 'Defending Terrain',
@@ -139,7 +139,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Atk CO
           value: atkCO,
           onChangeSetter: onChangeHelper(setAtkCO),
           label: 'Attacking CO',
@@ -147,7 +147,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Def CO
           value: defCO,
           onChangeSetter: onChangeHelper(setDefCO),
           label: 'Defending CO',
@@ -155,7 +155,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Atk Power Status
           value: atkPowerStatus,
           onChangeSetter: onChangeHelper(setAtkPowerStatus),
           label: 'Attacker Power Status',
@@ -163,7 +163,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        selectBox({
+        selectBox({ // Def Power Status
           value: defPowerStatus,
           onChangeSetter: onChangeHelper(setDefPowerStatus),
           label: 'Defender Power Status',
@@ -171,42 +171,42 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       {
-        numericalInput({
+        numericalInput({ // Atk Funds
           value: atkFunds,
           onChangeSetter: onChangeHelper(setAtkFunds),
           label: 'Attacker Funds',
         })
       }
       {
-        numericalInput({
+        numericalInput({ // Def Funds
           value: defFunds,
           onChangeSetter: onChangeHelper(setDefFunds),
           label: 'Defender Funds',
         })
       }
       {
-        numericalInput({
+        numericalInput({ // Atk Comm Towers
           value: atkCommTower,
           onChangeSetter: onChangeHelper(setAtkCommTower),
           label: 'Attacker Comm Towers',
         })
       }
       {
-        numericalInput({
+        numericalInput({ // Def Comm Towers
           value: defCommTower,
           onChangeSetter: onChangeHelper(setDefCommTower),
           label: 'Defender Comm Towers',
         })
       }
       {
-        numericalInput({
+        numericalInput({ // Atk Cities
           value: atkCities,
           onChangeSetter: onChangeHelper(setAtkCities),
           label: 'Attacker Cities',
         })
       }
       {
-        numericalInput({
+        numericalInput({ // Def Cities
           value: defFunds,
           onChangeSetter: onChangeHelper(setDefCities),
           label: 'Defender Cities',

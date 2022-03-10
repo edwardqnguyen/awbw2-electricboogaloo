@@ -6,9 +6,9 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import unitLoader from '../src/dataLoaders/unitLoader';
-import damageMatrixLoader from '../src/dataLoaders/damageMatrixLoader';
-import {unitToImageSrc} from '../src/dataHelpers/imageHelpers';
+import unitLoader from '../../src/dataLoaders/unitLoader';
+import damageMatrixLoader from '../../src/dataLoaders/damageMatrixLoader';
+import {unitToImageSrc} from '../../src/dataHelpers/imageHelpers';
 import * as React from 'react';
 
 const topFaction = 'CobaltIce';

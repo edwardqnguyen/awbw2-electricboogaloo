@@ -22,7 +22,7 @@
   },
   "include": [
     "./src/**/*"
-, "pages/damageCalculator.js"  ],
+, "pages/damageCalculator/damageCalculator.js"  ],
   "exclude": [
     "node_modules"
   ]
