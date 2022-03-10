@@ -9,6 +9,7 @@ import {damageEquationCalculator, damageRangeCalculator} from '../../src/engine/
 import selectBox from '../../src/components/selectBox';
 import numericalInput from '../../src/components/numericalInput';
 import * as React from 'react';
+import { range } from 'lodash';
 
 /**
  * @return {React.Component} React Component representing damage calculator
@@ -61,9 +62,9 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
   };
 
   // Helpers
-  const getDamageBase = () => {
-    const atkUnitIndex = unitList.indexOf(atkUnit);
-    const defUnitIndex = unitList.indexOf(defUnit);
+  const getDamageBase = (atk, def) => {
+    const atkUnitIndex = unitList.indexOf(atk);
+    const defUnitIndex = unitList.indexOf(def);
     return damageMatrix[atkUnitIndex][defUnitIndex];
   };
 
@@ -81,12 +82,43 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
     const terrainDef = isAirUnit(defUnit) ? 0 : terrainDefenseDict[defTerrain];
     const defBonus = defCOObject.defenseBonus(defUnitCombatData, atkUnit);
 
-    const {baseAttack: base, modifier: mod} = damageEquationCalculator(getDamageBase(), 100+atkBonus, 100+defBonus, terrainDef, atkHP, defHP);
+    const {baseAttack: base, modifier: mod} = damageEquationCalculator(getDamageBase(atkUnit, defUnit), 
+      100+atkBonus, 100+defBonus, terrainDef, atkHP, defHP);
     const badLuck = atkCOObject.badLuckMax(atkPowerStatus);
     const goodLuck = atkCOObject.goodLuckMax(atkPowerStatus);
     const damageRange = damageRangeCalculator(base, mod, badLuck, goodLuck);
     return damageRange;
   };
+
+  const getCounterAttackDamageRange = (possibleHealths) => {
+    return possibleHealths.map(health => {
+      const atkCOObject = coLibrary[atkCO];
+      const defCOObject = coLibrary[defCO];
+      const counterAtkBonus = 10*defCommTower + defCOObject.attackBonus(defUnitCombatData) + defCOObject.counterAttackBonus(defUnitCombatData);
+      const terrainDef = isAirUnit(atkUnit) ? 0 : terrainDefenseDict[atkTerrain];
+      const defBonus = atkCOObject.defenseBonus(atkUnitCombatData, defUnit);
+
+      const {baseAttack: base, modifier: mod} = damageEquationCalculator(getDamageBase(defUnit, atkUnit), 
+        100+counterAtkBonus, 100+defBonus, terrainDef, health, atkHP);
+      const badLuck = defCOObject.badLuckMax(defPowerStatus);
+      const goodLuck = defCOObject.goodLuckMax(defPowerStatus);
+      const damageRange = damageRangeCalculator(base, mod, badLuck, goodLuck);
+      return damageRange;
+    });
+  }
+
+  const getCombatReport = () => {
+    const atkDamageRange = getCombatDamageRange();
+    const defHPRange = atkDamageRange.map(dmg => defHP - (dmg-(dmg%10))/10);
+    const defHPValues = range(defHPRange[0], defHPRange[1]+1);
+    const counterDamageRange = getCounterAttackDamageRange(defHPValues);
+    let report =`Attack Damage Range is: ${atkDamageRange.toString()}\n`;
+    report += `Counter Attack Damage Range is: \n`;
+    counterDamageRange.forEach((dmgRange, i) => {
+      report += `At ${defHPValues[i]} health: ${dmgRange}\n`;
+    })
+    return report;
+  }
 
   return (
     <>
@@ -213,7 +245,7 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
         })
       }
       <text>
-        Damage Range is: {getCombatDamageRange().toString()}
+        {"Stuff "+ getCombatReport()}
       </text>
     </>
   );
