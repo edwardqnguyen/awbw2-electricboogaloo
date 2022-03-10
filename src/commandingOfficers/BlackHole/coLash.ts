@@ -33,6 +33,7 @@ export const coLash: CommandingOfficer = {
         }
         return bonus;
     },
+    counterAttackBonus: (data) => 0,
     defenseBonus: (data, atkUnit) => {
         let bonus = 0;
         const defBoost = getTerrainDef(data.terrain, data.unitName) * LASH_DEF_MULTIPLIER;

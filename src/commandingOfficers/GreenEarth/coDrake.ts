@@ -29,6 +29,7 @@ export const coDrake: CommandingOfficer = {
         }
         return bonus;
     },
+    counterAttackBonus: (data) => 0,
     defenseBonus: (data, atkUnit) => {
         let bonus = 0;
         const unitName = data.unitName;

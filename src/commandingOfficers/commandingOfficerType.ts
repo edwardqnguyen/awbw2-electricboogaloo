@@ -22,6 +22,7 @@ export interface CommandingOfficer {
     scopSize: number;
     
     attackBonus: (data: UnitCombatData) => number;
+    counterAttackBonus: (data: UnitCombatData) => number;
     defenseBonus: (data: UnitCombatData, atkUnit: string) => number;
     moveBonus: (data: UnitCombatData) => number;
 

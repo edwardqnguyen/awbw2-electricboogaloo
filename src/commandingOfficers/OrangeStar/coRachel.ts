@@ -33,6 +33,7 @@ export const coRachel: CommandingOfficer = {
         }
         return bonus;
     },
+    counterAttackBonus: (data) => 0,
     moveBonus: (data) => 0,
 
     badLuckMax: (powerStatus) => DEFAULT_BADLUCKMAX,

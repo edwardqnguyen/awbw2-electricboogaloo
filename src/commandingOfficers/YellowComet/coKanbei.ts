@@ -8,6 +8,7 @@ const KANBEI_D2D_ATK_BONUS = 30;
 const KANBEI_D2D_DEF_BONUS = 30;
 const KANBEI_COP_ATK_BONUS = 10;
 const KANBEI_SCOP_DEF_BONUS = 20;
+const KANBEI_SCOP_COUNTER_ATTACK_BONUS = 50;
 
 export const coKanbei: CommandingOfficer = {
     name: "Kanbei",
@@ -26,6 +27,7 @@ export const coKanbei: CommandingOfficer = {
         }
         return bonus;
     },
+    counterAttackBonus: (data) => data.powerStatus === 'SCOP' ? KANBEI_SCOP_COUNTER_ATTACK_BONUS : 0,
     defenseBonus: (data, atkUnit) => {
         let bonus = 0;
         switch(data.powerStatus){

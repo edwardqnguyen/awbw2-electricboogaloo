@@ -4,6 +4,7 @@ import { CommandingOfficer,
     DEFAULT_POWER_DEF_BONUS} from "../commandingOfficerType";
 
 const SONJA_D2D_BADLUCKMAX = 9;
+const SONJA_D2D_COUNTER_ATTACK_BONUS = 50;
 
 export const coSonja: CommandingOfficer = {
     name: "Sonja",
@@ -32,6 +33,7 @@ export const coSonja: CommandingOfficer = {
         }
         return bonus;
     },
+    counterAttackBonus: (data) => 50,
     moveBonus: (data) => 0,
 
     badLuckMax: (powerStatus) => SONJA_D2D_BADLUCKMAX,

@@ -24,6 +24,7 @@ export const coVonBolt: CommandingOfficer = {
         }
         return bonus;
     },
+    counterAttackBonus: (data) => 0,
     defenseBonus: (data, atkUnit) => {
         let bonus = 0;
         switch(data.powerStatus){
