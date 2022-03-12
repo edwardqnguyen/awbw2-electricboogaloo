@@ -28,7 +28,6 @@ const Root = styled('div')(
 function srcHelper(rep) {
   const terrain = terrainFromRepresentationDict[rep];
   const src = terrainToImageSrc(terrain, 'nada');
-  console.log(src);
   return src;
 }
 
