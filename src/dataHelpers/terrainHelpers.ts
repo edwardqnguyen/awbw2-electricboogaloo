@@ -21,6 +21,7 @@ export const terrainDefenseDict = {
     'Communication Tower': 3,
     'Lab': 3,
 }
+export const terrainNames = Object.keys(terrainDefenseDict);
 export function isUrbanTerrain(terrain: string): boolean{
     return urbanTerrain.includes(terrain);
 }

@@ -1,7 +1,6 @@
 import unitLoader from '../../src/dataLoaders/unitLoader';
 import damageMatrixLoader from '../../src/dataLoaders/damageMatrixLoader';
-import terrainLoader from '../../src/dataLoaders/terrainLoader';
-import {terrainDefenseDict} from '../../src/dataHelpers/terrainHelpers';
+import {terrainDefenseDict, terrainNames} from '../../src/dataHelpers/terrainHelpers';
 import {POWER_STATUS_OPTIONS} from '../../src/commandingOfficers/commandingOfficerType';
 import {coLibrary} from '../../src/commandingOfficers/coLibrary';
 import {isAirUnit} from '../../src/dataHelpers/unitHelpers';
@@ -14,11 +13,11 @@ import {range} from 'lodash';
 /**
  * @return {React.Component} React Component representing damage calculator
  */
-export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
+export default function damageCalculator({unitArray, dmgMatrix}) {
   // Game Data Lists.
   const unitList = unitArray;
   const damageMatrix = dmgMatrix;
-  const terrainList = terrainArray;
+  const terrainList = terrainNames;
   const availableCOS = Object.keys(coLibrary);
   // This gives [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   // See: https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
@@ -258,9 +257,8 @@ export default function damageCalculator({unitArray, dmgMatrix, terrainArray}) {
 export async function getServerSideProps() {
   const uA = unitLoader('src/gameData/units.txt');
   const dM = damageMatrixLoader('src/gameData/damage-matrix.txt');
-  const tA = terrainLoader('src/gameData/terrain.txt');
 
   return {
-    props: {unitArray: uA, dmgMatrix: dM, terrainArray: tA},
+    props: {unitArray: uA, dmgMatrix: dM},
   };
 }
