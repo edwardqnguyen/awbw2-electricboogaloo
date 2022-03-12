@@ -18,7 +18,7 @@ export const coLash: CommandingOfficer = {
     name: "Lash",
     copSize: 3,
     scopSize: 4,
-    
+    // TODO: Check how Lash unit hp affects boosts to defense and atk from terrain.
     attackBonus: (data) => {
         let bonus = 0;
         const atkBoost = getTerrainDef(data.terrain, data.unitName) * LASH_ATK_MULTIPLIER;

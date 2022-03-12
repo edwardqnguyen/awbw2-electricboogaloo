@@ -1,34 +1,65 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-5cd94c89d3acac5f.js"
   ],
-  "devFiles": [
-    "static/chunks/react-refresh.js"
-  ],
-  "ampDevFiles": [
-    "static/chunks/webpack.js",
-    "static/chunks/amp.js"
-  ],
+  "devFiles": [],
+  "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js",
-    "static/development/_middlewareManifest.js"
+    "static/0N3NYt-wudN4xRnLnq104/_buildManifest.js",
+    "static/0N3NYt-wudN4xRnLnq104/_ssgManifest.js",
+    "static/0N3NYt-wudN4xRnLnq104/_middlewareManifest.js"
   ],
   "pages": {
+    "/": [
+      "static/chunks/webpack-42cdea76c8170223.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/pages/index-688e975e8eb9638d.js"
+    ],
     "/_app": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_app.js"
+      "static/chunks/webpack-42cdea76c8170223.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/pages/_app-ba0d1cdf43a37972.js"
     ],
     "/_error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_error.js"
+      "static/chunks/webpack-42cdea76c8170223.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/pages/_error-6679c1efb053c50e.js"
+    ],
+    "/coDamageChart": [
+      "static/chunks/webpack-42cdea76c8170223.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/470-194960fb58d3020f.js",
+      "static/chunks/983-5fe0f70402591cc8.js",
+      "static/chunks/867-ed7e24b00be2677b.js",
+      "static/chunks/pages/coDamageChart-72f05affc05da8ab.js"
     ],
     "/damageCalculator": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/damageCalculator.js"
+      "static/chunks/webpack-42cdea76c8170223.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/29107295-a2d0c8e72019a3ed.js",
+      "static/chunks/470-194960fb58d3020f.js",
+      "static/chunks/942-cc4a74defaf42fdc.js",
+      "static/chunks/867-ed7e24b00be2677b.js",
+      "static/chunks/pages/damageCalculator-2d4184524ec55657.js"
+    ],
+    "/example_index": [
+      "static/chunks/webpack-42cdea76c8170223.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/pages/example_index-c3e1a1655133c00e.js"
+    ],
+    "/unitDamageChart": [
+      "static/chunks/webpack-42cdea76c8170223.js",
+      "static/chunks/framework-91d7f78b5b4003c8.js",
+      "static/chunks/main-83803dd478f5b5bc.js",
+      "static/chunks/470-194960fb58d3020f.js",
+      "static/chunks/983-5fe0f70402591cc8.js",
+      "static/chunks/pages/unitDamageChart-6bea64119b4a2e56.js"
     ]
   },
   "ampFirstPages": []

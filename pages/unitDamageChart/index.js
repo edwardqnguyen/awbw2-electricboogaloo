@@ -6,6 +6,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+import {styled} from '@mui/system';
 import unitLoader from '../../src/dataLoaders/unitLoader';
 import damageMatrixLoader from '../../src/dataLoaders/damageMatrixLoader';
 import {unitToImageSrc} from '../../src/dataHelpers/imageHelpers';
@@ -13,6 +14,15 @@ import * as React from 'react';
 
 const topFaction = 'CobaltIce';
 const sideFaction = 'RedFire';
+
+const Root = styled('div')(
+    ({theme}) => `
+  td {
+    width:0.1%;
+    white-space: nowrap;
+    } 
+`,
+);
 
 /**
  * Unit on Unit Base Damage Chart
@@ -22,7 +32,7 @@ export default function unitDamageChart({unitArray, dmgMatrix}) {
   const unitList = unitArray;
   const damageMatrix = dmgMatrix;
   return (
-    <>
+    <Root>
       <TableContainer>
         <Table>
           <TableHead>
@@ -53,7 +63,7 @@ export default function unitDamageChart({unitArray, dmgMatrix}) {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Root>
   );
 }
 
