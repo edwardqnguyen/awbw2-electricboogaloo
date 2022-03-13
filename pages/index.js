@@ -22,6 +22,9 @@ export default function Home() {
           <li>
             <Link href="/coDamageChart">CO Atk/Def Modifiers</Link>
           </li>
+          <li>
+            <Link href="/mapDemo">Map Demo</Link>
+          </li>
         </ul>
       </main>
     </div>

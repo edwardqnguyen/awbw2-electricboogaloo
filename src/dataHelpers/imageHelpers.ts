@@ -1,55 +1,10 @@
 import { isUrbanTerrain, isConnectedTerrain } from "./terrainHelpers";
-const unitDict = {
-    "Anti-Air": 'anti-air',
-    "APC": 'apc',
-    "Artillery":'artillery',
-    "B-Copter": 'b-copter',
-    "Battleship": 'battleship',
-    "Black Boat": 'blackboat',
-    "Black Bomb": 'blackbomb',
-    "Bomber": 'bomber',
-    "Carrier": 'carrier',
-    "Cruiser": 'cruiser',
-    "Fighter": 'fighter',
-    "Infantry": 'infantry',
-    "Lander": 'lander',
-    "Md. Tank": 'md.tank',
-    "Mech": 'mech',
-    "Mega Tank": 'megatank',
-    "Missile": 'missile',
-    "Neotank": 'neotank',
-    "Piperunner": 'piperunner',
-    "Recon": 'recon',
-    "Rocket": 'rocket',
-    "Stealth": 'stealth',
-    "Sub": 'sub',
-    "T-Copter": 't-copter',
-    "Tank": 'tank'
-}
-
-const terrainDict = {
-    "Plain": "plain",
-    "Mountain": "mountain",
-    "Forest": "wood", 
-    "River": "river",
-    "Road": "road",
-    'Bridge': "bridge",
-    "Sea": "sea",
-    "Shoal": "shoal",
-    'Reef': "reef",
-    'City': "city",
-    'Base': "base",
-    'Airport': "airport",
-    'Port': "port",
-    'Headquarters': "hq",
-    'Pipe': "pipe",
-    'Silo': "silo",
-    'Communication Tower': "comtower",
-    'Lab': "lab",
-}
+import { unitDict, terrainDict } from "./imageDicts";
+import fs from 'fs';
 
 export const version = ["AW1", "AW2", "AWDS"];
 export type Version = "AW1" | "AW2" | "AWDS";
+const errorTile = "/awbwAssets/Urban/PurpleLightning/hq.gif"
 
 export function unitToImageSrc(unitName: string, faction: string){
     return "/awbwAssets/"+faction+"/"+unitDict[unitName]+".gif";
@@ -67,7 +22,7 @@ function specifierTranslation(terrain: string, specifier: string){
 export function terrainToImageSrc(terrain: string, specifier: string, weather?: string){
     let directoryPrefix = "/awbwAssets/";
     if(isUrbanTerrain(terrain)){
-        directoryPrefix += "Neutral"+"/";
+        directoryPrefix += "Urban/"+"Neutral"+"/";
     } else if(isConnectedTerrain(terrain)){
         directoryPrefix += "Terrain/"+terrain+"/"
     } else {
@@ -75,5 +30,19 @@ export function terrainToImageSrc(terrain: string, specifier: string, weather?: 
     }
     let filename = terrainDict[terrain]+specifierTranslation(terrain, specifier);
     if(weather) filename += "_" + weather;
-    return directoryPrefix+filename+".gif";
+    const testFile = directoryPrefix+filename+".gif";
+
+    try{
+        // TODO: Check if image exists or not.
+
+        // if(fs.existsSync("/public"+testFile)){
+        //     return testFile;
+        // }
+        // else {
+        //     return errorTile;
+        // }
+        return testFile;
+    } catch(err) {
+        console.error(err)
+    }
 }
