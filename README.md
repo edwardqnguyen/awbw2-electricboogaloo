@@ -15,6 +15,10 @@ instructions.
 You can then run the app locally by doing
 
 ```
+git clone https://github.com/edwardqnguyen/awbw2-electricboogaloo
+
+cd awbw2-elecrtricboogaloo
+
 yarn install
 yarn build
 yarn dev
